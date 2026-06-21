@@ -9,7 +9,7 @@
 > **Paper:** *MF-MSKA-Net: A Multi-Scale Morphological Skeleton Attention Network
 > with Hybrid Cross-Attention Fusion for Brain Tumor MRI Segmentation*
 > **Author:** Oussama El Othmani · Military Academy of Fondouk Jedid, Tunisia
-> **Journal:** Neural Computing and Applications (Springer) — under review
+> **Journal:** Under review
 
 ---
 
