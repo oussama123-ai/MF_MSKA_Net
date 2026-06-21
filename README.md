@@ -294,6 +294,3 @@ This project is released under the [MIT License](LICENSE).
 The author thanks the **Military Hospital of Tunisia** for benchmark validation
 support, and **Kaggle / BRISC 2025** for making the dataset publicly available.
 
----
-
-*Neural Computing and Applications · Springer · Submitted 2025*
