@@ -243,12 +243,11 @@ train_df, val_df, test_df = split_dataset(df, seed=42)
 If you use this code or the MF-MSKA-Net architecture in your research, please cite:
 
 ```bibtex
-@article{elothmani2025mfmskanet,
+@article{elothmani2026mfmskanet,
   title   = {{MF-MSKA-Net}: A Multi-Scale Morphological Skeleton Attention Network
              with Hybrid Cross-Attention Fusion for Brain Tumor {MRI} Segmentation},
   author  = {El Othmani, Oussama},
-  journal = {Neural Computing and Applications},
-  year    = {2025},
+  year    = {2026},
   note    = {Under review},
   url     = {https://github.com/oussama123-ai/MF_MSKA_Net}
 }
