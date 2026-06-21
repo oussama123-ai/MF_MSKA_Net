@@ -1,0 +1,53 @@
+# configs/default.yaml
+# MF-MSKA-Net default configuration
+# Override any key on the command line: --epochs 100
+
+# ── Dataset ──────────────────────────────────────────────────────────────────
+data:
+  image_dir:  "images"           # sub-folder inside data_dir
+  mask_dir:   "masks"            # sub-folder inside data_dir
+  train_frac: 0.70
+  val_frac:   0.10               # test_frac = 1 - train_frac - val_frac  = 0.20
+  seed:       42
+
+# ── Model ─────────────────────────────────────────────────────────────────────
+model:
+  img_size:    256
+  patch_size:  16
+  emb_dim:     192
+  num_layers:  4
+  num_heads:   6
+  mlp_dim:     384
+  dropout:     0.1
+  freq_dim:    64
+
+# ── Training ──────────────────────────────────────────────────────────────────
+train:
+  epochs:       50
+  batch_size:   8
+  lr:           1.0e-4
+  patience:     12          # early stopping
+  warmup_frac:  0.05        # fraction of total steps used for LR warm-up
+
+# ── Loss ──────────────────────────────────────────────────────────────────────
+loss:
+  tversky_alpha:  0.3       # FP penalty
+  tversky_beta:   0.7       # FN penalty (higher → penalise missed tumour more)
+  focal_gamma:    2.0
+  focal_alpha_t:  0.25
+  w_tversky:      0.4
+  w_focal:        0.3
+  w_dice:         0.3
+
+# ── Evaluation ────────────────────────────────────────────────────────────────
+eval:
+  threshold:    0.5
+  tta_flips:    4            # number of TTA augmentations (1 = no TTA)
+  n_folds:      5
+
+# ── Paths ─────────────────────────────────────────────────────────────────────
+paths:
+  checkpoint:    "mf_mska_best.keras"
+  history:       "history.json"
+  metrics:       "final_metrics.json"
+  split_indices: "split_indices.json"

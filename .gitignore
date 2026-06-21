@@ -1,0 +1,63 @@
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+*.whl
+*.spec
+
+# ── Virtual environments ───────────────────────────────────────────────────────
+venv/
+env/
+.venv/
+.env/
+
+# ── Jupyter ───────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb_metadata
+
+# ── TensorFlow / Keras ────────────────────────────────────────────────────────
+logs/
+*.keras
+*.h5
+*.pb
+saved_model/
+tf_logs/
+
+# ── Data ──────────────────────────────────────────────────────────────────────
+data/
+*.zip
+*.tar.gz
+*.csv
+
+# ── Outputs / runs ────────────────────────────────────────────────────────────
+runs/
+predictions/
+eval_results/
+
+# ── Weights ───────────────────────────────────────────────────────────────────
+weights/*.keras
+weights/*.h5
+# Keep the weights directory itself
+!weights/.gitkeep
+
+# ── OS ────────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDEs ─────────────────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*~
+
+# ── Misc ─────────────────────────────────────────────────────────────────────
+.pytest_cache/
+.mypy_cache/
+coverage.xml
+*.log

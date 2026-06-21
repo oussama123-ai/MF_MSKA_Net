@@ -1,0 +1,412 @@
+================================================================
+  MF-MSKA-Net — Complete GitHub Upload Instructions
+  Repository: https://github.com/oussama123-ai/MF_MSKA_Net
+================================================================
+
+This document covers every step from a fresh machine to a fully
+published repository with releases, figures, and a notebook.
+
+────────────────────────────────────────────────────────────────
+PART A — ONE-TIME SETUP (skip if already done)
+────────────────────────────────────────────────────────────────
+
+A1. Install Git
+    ┌─────────────────────────────────────────────────────────┐
+    │  Linux (Ubuntu/Debian)                                  │
+    │  sudo apt update && sudo apt install -y git             │
+    │                                                         │
+    │  macOS                                                  │
+    │  brew install git                                       │
+    │                                                         │
+    │  Windows                                                │
+    │  https://git-scm.com/download/win                       │
+    └─────────────────────────────────────────────────────────┘
+
+A2. Configure Git identity (first time only)
+
+    git config --global user.name  "Oussama El Othmani"
+    git config --global user.email "oussama.elothmani@ept.u-carthage.tn"
+
+A3. Create a GitHub Personal Access Token (PAT)
+    (needed when pushing — replaces password since Aug 2021)
+
+    1. Go to: https://github.com/settings/tokens
+    2. Click "Generate new token (classic)"
+    3. Name: MF_MSKA_Net_upload
+    4. Expiration: 90 days (or No expiration for long-term)
+    5. Scopes: ✅ repo  (full control of private repositories)
+    6. Click "Generate token"
+    7. COPY the token NOW — you will not see it again.
+       Example: ghp_AbCdEfGhIjKlMnOpQrStUvWxYz123456
+
+    Save it securely (password manager recommended).
+
+────────────────────────────────────────────────────────────────
+PART B — CREATE THE GITHUB REPOSITORY
+────────────────────────────────────────────────────────────────
+
+B1. Create repository on GitHub
+
+    1. Visit: https://github.com/new
+    2. Repository name:  MF_MSKA_Net
+    3. Description:
+       "MF-MSKA-Net: Multi-Scale Morphological Skeleton Attention
+        Network for Brain Tumor MRI Segmentation (NCA 2025)"
+    4. Visibility: ✅ Public
+    5. ❌ Do NOT initialise with README (we push our own)
+    6. ❌ Do NOT add .gitignore or licence (already in repo)
+    7. Click "Create repository"
+
+    Your remote URL will be:
+    https://github.com/oussama123-ai/MF_MSKA_Net.git
+
+────────────────────────────────────────────────────────────────
+PART C — INITIALISE LOCAL REPOSITORY AND PUSH
+────────────────────────────────────────────────────────────────
+
+C1. Navigate to the project folder
+
+    cd /path/to/MF_MSKA_Net
+    # e.g. cd ~/projects/MF_MSKA_Net
+
+C2. Verify the folder structure
+
+    ls -1
+    # Expected output:
+    # CITATION.cff
+    # LICENSE
+    # README.md
+    # configs/
+    # figures/
+    # notebooks/
+    # requirements.txt
+    # scripts/
+    # src/
+    # weights/
+    # .gitignore
+
+C3. Initialise Git and make the first commit
+
+    git init
+    git branch -M main
+
+    # Stage everything (respects .gitignore)
+    git add .
+
+    # Verify what will be committed
+    git status
+
+    # Make the initial commit
+    git commit -m "Initial commit: MF-MSKA-Net source code, scripts, and docs
+
+    - src/model.py    : MSFE, SKA, HCAF modules + build_mf_mska_net()
+    - src/losses.py   : combined_loss, dice_coef, iou_metric
+    - src/data.py     : data pipeline, split, generator, CV folds
+    - scripts/train.py    : full training pipeline
+    - scripts/evaluate.py : test-set evaluation, 5-fold CV, ablation
+    - scripts/predict.py  : single-image / batch inference
+    - scripts/demo.py     : Gradio interactive demo
+    - notebooks/MF_MSKA_Net_Inference.ipynb
+    - configs/default.yaml
+    - requirements.txt, LICENSE, CITATION.cff, README.md"
+
+C4. Connect to GitHub remote
+
+    git remote add origin \
+        https://github.com/oussama123-ai/MF_MSKA_Net.git
+
+    # Verify remote
+    git remote -v
+    # origin  https://github.com/oussama123-ai/MF_MSKA_Net.git (fetch)
+    # origin  https://github.com/oussama123-ai/MF_MSKA_Net.git (push)
+
+C5. Push to GitHub
+
+    git push -u origin main
+
+    When prompted:
+      Username: oussama123-ai
+      Password: <paste your PAT from step A3>
+
+    ✅ You should see:
+    Enumerating objects: XX, done.
+    Branch 'main' set up to track remote branch 'main' from 'origin'.
+
+    If you want to cache credentials so you are not prompted every push:
+    git config --global credential.helper store
+
+────────────────────────────────────────────────────────────────
+PART D — ADD PAPER FIGURES
+────────────────────────────────────────────────────────────────
+
+D1. Copy all 18 manuscript figures into the figures/ folder
+
+    cp /path/to/Fig1_architecture_main_clean.pdf       figures/
+    cp /path/to/Fig2_msfe_module_clean.pdf             figures/
+    cp /path/to/Fig3_ska_module_clean.pdf              figures/
+    cp /path/to/Fig4_hcaf_block_clean.pdf              figures/
+    cp /path/to/Fig5_loss_function_clean.pdf           figures/
+    cp /path/to/Fig6_ska_visualization.pdf             figures/
+    cp /path/to/Fig7_experimental_protocol_clean.pdf   figures/
+    cp /path/to/Fig8_preprocessing_pipeline.pdf        figures/
+    cp /path/to/Fig9_evaluation_workflow_clean.pdf     figures/
+    cp /path/to/Fig10_cross_attention_vit_baseline_clean.pdf  figures/
+    cp /path/to/Fig11_test_metrics_clean.pdf           figures/
+    cp /path/to/Fig11_training_curves_notebook.pdf     figures/
+    cp /path/to/Fig12_qualitative_predictions_notebook.pdf figures/
+    cp /path/to/Fig13_pixel_confusion_matrix_notebook.pdf  figures/
+    cp /path/to/Fig13_failure_analysis_clean.pdf       figures/
+    cp /path/to/Fig14_cv_stability_clean.pdf           figures/
+    cp /path/to/Fig15_ablation_analysis_clean.pdf      figures/
+    cp /path/to/Fig16_statistical_analysis_clean.pdf   figures/
+    cp /path/to/Fig17_baseline_comparison_clean.pdf    figures/
+    cp /path/to/Fig18_wilcoxon_significance_summary.pdf figures/
+    cp /path/to/Fig19_efficiency_profile_clean.pdf     figures/
+    cp /path/to/Fig20_external_validation_clean.pdf    figures/
+
+D2. Commit and push figures
+
+    git add figures/
+    git commit -m "Add paper figures (PDF): Figs 1-20 for manuscript"
+    git push
+
+────────────────────────────────────────────────────────────────
+PART E — ADD PRE-TRAINED WEIGHTS (GitHub Release)
+────────────────────────────────────────────────────────────────
+
+GitHub limits file size to 100 MB per file and 2 GB per repository.
+The checkpoint (~6 MB) fits easily, but use a Release asset for
+clean separation of code and weights.
+
+E1. Create a GitHub Release
+
+    Method A: Web interface
+    ─────────────────────────
+    1. Go to: https://github.com/oussama123-ai/MF_MSKA_Net/releases
+    2. Click "Draft a new release"
+    3. Tag version: v1.0.0
+    4. Release title: "MF-MSKA-Net v1.0.0 — Pre-trained Weights"
+    5. Description:
+       "Pre-trained checkpoint for MF-MSKA-Net trained on BRISC 2025.
+        Split: 70/10/20, seed=42, 50 epochs, Adam lr=1e-4.
+        Test Dice: 0.7912 | IoU: 0.6546 | HD95: 8.90 px | Params: 1.53M"
+    6. Attach binary:
+       - Click "Attach binaries by dropping them here or selecting them"
+       - Upload: mf_mska_best.keras
+    7. Click "Publish release"
+
+    Method B: GitHub CLI (gh)
+    ──────────────────────────
+    pip install gh   # or: brew install gh
+    gh auth login
+    gh release create v1.0.0 \
+        weights/mf_mska_best.keras \
+        --title "MF-MSKA-Net v1.0.0 — Pre-trained Weights" \
+        --notes "BRISC 2025 checkpoint: Dice=0.7912, IoU=0.6546, HD95=8.90"
+
+E2. Update README download link
+
+    The README already has the placeholder:
+    > [Download](https://github.com/oussama123-ai/MF_MSKA_Net/releases)
+
+    After creating the release, users can download the .keras file from
+    the Releases page automatically.
+
+────────────────────────────────────────────────────────────────
+PART F — REPOSITORY SETTINGS AND TOPICS
+────────────────────────────────────────────────────────────────
+
+F1. Add repository topics (improves discoverability)
+
+    1. Go to: https://github.com/oussama123-ai/MF_MSKA_Net
+    2. Click the ⚙ gear icon next to "About"
+    3. Add topics:
+       brain-tumor-segmentation
+       medical-image-segmentation
+       mri-segmentation
+       deep-learning
+       tensorflow
+       skeleton-attention
+       transformer
+       unet
+       neural-computing-applications
+
+F2. Add website / paper link
+
+    Website field: https://link.springer.com/journal/521
+
+F3. Enable features (optional)
+    Settings → Features:
+      ✅ Issues
+      ✅ Discussions (useful for community questions)
+      ✅ Wiki
+
+────────────────────────────────────────────────────────────────
+PART G — VERIFY THE UPLOADED REPOSITORY
+────────────────────────────────────────────────────────────────
+
+G1. Check file tree matches paper
+
+    Visit: https://github.com/oussama123-ai/MF_MSKA_Net
+
+    Expected top-level files:
+    ✅ README.md       (rendered with badges and results table)
+    ✅ requirements.txt
+    ✅ LICENSE
+    ✅ CITATION.cff
+    ✅ .gitignore
+    ✅ configs/default.yaml
+    ✅ src/model.py, losses.py, data.py, __init__.py
+    ✅ scripts/train.py, evaluate.py, predict.py, demo.py
+    ✅ notebooks/MF_MSKA_Net_Inference.ipynb
+    ✅ figures/ (18-20 PDF figures)
+    ✅ weights/README.txt
+
+G2. Test clone on a fresh machine
+
+    git clone https://github.com/oussama123-ai/MF_MSKA_Net.git
+    cd MF_MSKA_Net
+    pip install -r requirements.txt
+    python -c "from src.model import build_mf_mska_net; m=build_mf_mska_net(); print(m.count_params())"
+    # Expected: 1,528,XXX
+
+G3. Verify the inference notebook renders on GitHub
+
+    Navigate to:
+    https://github.com/oussama123-ai/MF_MSKA_Net/blob/main/notebooks/MF_MSKA_Net_Inference.ipynb
+
+    GitHub renders Jupyter notebooks automatically — check that all
+    cells are visible.
+
+────────────────────────────────────────────────────────────────
+PART H — KAGGLE NOTEBOOK (OPTIONAL BUT RECOMMENDED)
+────────────────────────────────────────────────────────────────
+
+Springer reviewers and readers may want a one-click reproducible run.
+Publishing a Kaggle notebook linked to the BRISC 2025 dataset satisfies
+this requirement without requiring local installation.
+
+H1. Create a new Kaggle notebook
+
+    1. Go to: https://www.kaggle.com/code/new
+    2. Title: "MF-MSKA-Net: Brain Tumor Segmentation (NCA 2025)"
+    3. Add data: BRISC 2025 (search "brisc2025")
+    4. Accelerator: GPU P100 or T4
+
+H2. Notebook cells
+
+    # Cell 1: Clone repo
+    !git clone https://github.com/oussama123-ai/MF_MSKA_Net.git
+    import sys; sys.path.insert(0, "/kaggle/working/MF_MSKA_Net")
+
+    # Cell 2: Install extra deps
+    !pip install -q gradio
+
+    # Cell 3: Train
+    !python MF_MSKA_Net/scripts/train.py \
+        --data_dir  /kaggle/input/brisc2025/brisc2025/segmentation_task/train \
+        --output_dir /kaggle/working/runs/exp1 \
+        --epochs 50
+
+    # Cell 4: Evaluate
+    !python MF_MSKA_Net/scripts/evaluate.py \
+        --data_dir  /kaggle/input/brisc2025/brisc2025/segmentation_task/train \
+        --ckpt_path /kaggle/working/runs/exp1/mf_mska_best.keras \
+        --output_dir /kaggle/working/runs/exp1 \
+        --run_cv
+
+H3. Make the notebook public
+
+    Click "Share" → "Public" → Save
+
+    Add URL to the README:
+    ## Reproducible Run
+    [![Kaggle](https://img.shields.io/badge/Kaggle-Notebook-blue)](
+    https://www.kaggle.com/code/oussama123ai/mf-mska-net-brain-tumor-segmentation)
+
+────────────────────────────────────────────────────────────────
+PART I — UPDATING THE REPOSITORY AFTER REVISIONS
+────────────────────────────────────────────────────────────────
+
+After each paper revision or code update:
+
+    # 1. Make your changes locally
+    # 2. Stage changed files
+    git add -A
+
+    # 3. Commit with a descriptive message
+    git commit -m "Revision 1: add HD95 to ablation table, fix Fig8 path"
+
+    # 4. Push
+    git push
+
+    # 5. If weights change, update the release
+    gh release upload v1.0.0 weights/mf_mska_best.keras --clobber
+
+For major revisions, create a new release tag:
+    git tag v1.1.0
+    git push origin v1.1.0
+    gh release create v1.1.0 weights/mf_mska_best.keras \
+        --title "MF-MSKA-Net v1.1.0 — Revision 1 weights" \
+        --notes "Updated after reviewer revision 1"
+
+────────────────────────────────────────────────────────────────
+PART J — MANUSCRIPT CODE AVAILABILITY STATEMENT
+────────────────────────────────────────────────────────────────
+
+Copy this text into your paper's "Code availability" declaration:
+
+────────────────────────────────────────────────────────────────
+The source code, pre-trained weights, inference notebook, and
+all experimental scripts for MF-MSKA-Net are publicly available
+at:
+
+  https://github.com/oussama123-ai/MF_MSKA_Net
+
+The repository includes the full model implementation (MSFE, SKA,
+and HCAF modules), training and evaluation scripts, a Gradio
+interactive demo, and the split index file (seed = 42) required
+to reproduce the exact 70/10/20 data partition used in all
+reported experiments.
+────────────────────────────────────────────────────────────────
+
+And for the LaTeX source (already present in the manuscript):
+
+  \bmhead{Code availability}
+  \url{https://github.com/oussama123-ai/MF_MSKA_Net}
+
+────────────────────────────────────────────────────────────────
+QUICK REFERENCE — ALL COMMANDS IN ORDER
+────────────────────────────────────────────────────────────────
+
+# 0. Setup (once)
+git config --global user.name  "Oussama El Othmani"
+git config --global user.email "oussama.elothmani@ept.u-carthage.tn"
+
+# 1. Go to project
+cd /path/to/MF_MSKA_Net
+
+# 2. Add figures
+cp /path/to/figures/*.pdf figures/
+
+# 3. Initialise & first push
+git init
+git branch -M main
+git add .
+git commit -m "Initial commit: MF-MSKA-Net v1.0.0"
+git remote add origin https://github.com/oussama123-ai/MF_MSKA_Net.git
+git push -u origin main
+
+# 4. Release weights
+gh release create v1.0.0 weights/mf_mska_best.keras \
+    --title "MF-MSKA-Net v1.0.0" \
+    --notes "Dice=0.7912 | IoU=0.6546 | HD95=8.90 | Params=1.53M"
+
+# 5. Verify
+git clone https://github.com/oussama123-ai/MF_MSKA_Net.git /tmp/test_clone
+python /tmp/test_clone/MF_MSKA_Net/src/model.py
+
+================================================================
+  End of instructions
+  Repository: https://github.com/oussama123-ai/MF_MSKA_Net
+================================================================

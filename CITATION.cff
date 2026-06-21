@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "MF-MSKA-Net: Multi-Scale Morphological Skeleton Attention Network
+  with Hybrid Cross-Attention Fusion for Brain Tumor MRI Segmentation"
+authors:
+  - family-names: El Othmani
+    given-names: Oussama
+    email: oussama.elothmani@ept.u-carthage.tn
+    affiliation: >-
+      Computer Science Department, Military Academy of Fondouk Jedid,
+      Nabeul 8012, Tunisia; Military Research Center, Aouina 2045, Tunisia
+version: "1.0.0"
+date-released: "2025-06-01"
+url: "https://github.com/oussama123-ai/MF_MSKA_Net"
+repository-code: "https://github.com/oussama123-ai/MF_MSKA_Net"
+license: MIT
+keywords:
+  - brain tumor segmentation
+  - medical image segmentation
+  - MRI
+  - morphological skeleton attention
+  - multi-scale feature extraction
+  - cross-attention fusion
+  - deep learning
+  - TensorFlow
+preferred-citation:
+  type: article
+  title: >-
+    MF-MSKA-Net: A Multi-Scale Morphological Skeleton Attention Network
+    with Hybrid Cross-Attention Fusion for Brain Tumor MRI Segmentation
+  authors:
+    - family-names: El Othmani
+      given-names: Oussama
+  journal: "Neural Computing and Applications"
+  publisher:
+    name: Springer
+  year: 2025
+  status: under-review
+  url: "https://github.com/oussama123-ai/MF_MSKA_Net"
